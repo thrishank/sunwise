@@ -72,6 +72,12 @@ body{
   backdrop-filter: blur(15px);
   
 }
+/* Add CSS styles here */
+#map {
+  height: 5rem;
+  width: 100%;
+}
+
 .quote{
   position: absolute;
   /* bottom: 15rem; */
@@ -131,7 +137,7 @@ body{
   /* width: 300px; */
   /* background: rgba(173, 79, 79, 0.1); */
   /* background-color: rgba(0,0,0,0.5); */
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px) !important;
   border-radius: 10px;
   overflow: hidden;
   /* transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
@@ -159,5 +165,14 @@ body{
   text-decoration: none;
   color: black;
   border: 1px dotted black;
+}
+.subsidy-box{
+  border: 2px solid red;
+  height: 75vh;
+  width: 75vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
  
