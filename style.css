@@ -203,4 +203,80 @@ body{
   width: 100%;
   text-align: center;
 }
- 
+
+/*Footer CSS */
+footer{
+  position: fixed;
+  bottom: 0;
+  background-color: #eceef9;
+  width: 100%;
+  /* height: 150px; */
+}
+a {
+  text-decoration: none;
+}
+.row{
+  display: flex;
+  padding: 1rem;
+}
+.column {
+  width: calc(100% / 3);
+  padding: 0 0.9375rem;
+}
+h3{
+  margin-bottom: 1rem;
+  font-size: large;
+}
+p{
+  font-size: large;
+  line-height: 1.3rem;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul li{
+  margin-bottom: 0.5rem;
+}
+ul li a {
+  color: blueviolet;
+}
+ul li a:hover {
+  color:rgb(246, 216, 162)
+}
+ul.social-icons{
+  display: flex;
+  column-gap: 0.5rem;
+}
+ul.social-icons li a{
+  margin-bottom: 0;
+}
+ul.social-icons li a {
+  display: grid;
+  place-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  background-color: #6faaff;
+}
+ul.social-icons li:hover a {
+  background-color: #6fdeff;
+}
+.copyright{
+  text-align: center;
+  color: black;
+  background-color: #6fdeff;
+  padding: 0.5rem 0;
+}
+@media screen and (max-width: 768px) {
+  .column {
+    margin: 0.5rem 0;
+    width: 100%;
+    padding: 0;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
