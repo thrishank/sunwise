@@ -203,12 +203,11 @@ body{
   width: 100%;
   text-align: center;
 }
-
 /*Footer CSS */
 footer{
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
-  background-color: #eceef9;
+  background-color: black;
   width: 100%;
   /* height: 150px; */
 }
@@ -226,10 +225,12 @@ a {
 h3{
   margin-bottom: 1rem;
   font-size: large;
+  color: white;
 }
 p{
   font-size: large;
   line-height: 1.3rem;
+  color: white;
 }
 ul {
   list-style: none;
@@ -265,8 +266,8 @@ ul.social-icons li:hover a {
 }
 .copyright{
   text-align: center;
-  color: black;
-  background-color: #6fdeff;
+  color: white;
+  background-color: black;
   padding: 0.5rem 0;
 }
 @media screen and (max-width: 768px) {
