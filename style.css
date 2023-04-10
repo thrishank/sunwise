@@ -186,7 +186,7 @@ body{
   border-radius: 1rem;
   padding: 0.5rem;
   /* box-shadow: 10px 10px black; */
-  z-index: -1;
+/*   z-index: -1; */
 }
 .sec-2{
   display: flex;
@@ -197,6 +197,8 @@ body{
   opacity: 0.75;
   padding: 1rem;
   margin: 1rem;
+  position:relative;
+  z-index:-1;
   /* flex-wrap: wrap; */
 }
 .readv{
