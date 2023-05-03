@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Energy Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            position: relative; /* Add this line */
+            /* z-index: -1; Add this line */
+
+        /* } */
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(85, 147, 147);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(85, 147, 147);
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+        .sub_result_box{
+            /* border: 2px solid red; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 10vh;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+            max-width: 70vw;
+            max-height: 70vh;
+            margin: auto;
+            /* z-index: -1; */
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px; /* Add this line */
+        }
+
+        th {
+            background-color: #494f49;
+            color: white;
+        }
+    </style>
+</head>
+
+<body style="background-color: white;">
+    <!-- style="background-color: rgba(255,236,230,255);" -->
+<div class="totalnav">
+    <div class="logonav">
+        <p class="title animate__animated animate__tada">SunWise</p>
+    </div>
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About us</a></li>
+            <li><a href="Tariff.html">Tariff</a></li>
+            <li><a href="option.html">Solar Calculator</a></li>
+            <li><a href="subsidy.html">Subsidy</a></li>
+            <li><a href="emi.html">EMI calculation</a></li>
+        </ul>
+    </div>
+    <div class="bars">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+</div>
+<div class="bars">
+    <div class="dropdown_menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About us</a></li>
+            <li><a href="Tariff.html">Tariff</a></li>
+            <li><a href="option.html">Solar Calculator</a></li>
+            <li><a href="subsidy.html">Subsidy</a></li>
+            <li><a href="emi.html">EMI calculation</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    
+    <div class="sub_result_box">
+    <div class="input-section">
+        <br>
+        <label for="capacity">Enter Solar Panel Capacity (in kW):</label>
+        <input type="number" id="capacity" min="0" step="0.01" required>
+    </div>
+
+    <button id="subsidy">Calculate</button>
+
+        <div id="result"></div>
+        <br>
+        <div class="sub_info">
+            <h1>SUBSIDY</h1>
+            
+            <table>
+                <tr>
+                    <th>System Capacity(kW)</th>
+                    <th>Solar Subsidy(in %)</th>
+                </tr>
+                
+                <tr>
+                <td>1 kW to 3 kW</td>
+                <td>40%</td>
+            </tr>
+
+            <tr>
+                <td>4 kW to 10 kW</td>
+                <td>20%</td>
+            </tr>
+
+            <!-- No subsidy for more than 10 kW -->
+            <!-- Commenting out the following lines -->
+            <tr>
+                <td>More than 10 kW</td>
+                <td>No Subsidy</td>
+            </tr>
+        </table>
+    </div>
+    </div>
+</div>
+
+<script>
+    const subsidyBtn = document.getElementById("subsidy");
+
+    subsidyBtn.addEventListener("click", calculateCost);
+
+    function calculateCost() {
+        const capacity = document.getElementById("capacity").value;
+        let cost = 0;
+        let subsidizedCost = 0;
+
+        if (capacity <= 1) {
+            cost = capacity * 46923;
+            subsidizedCost = cost * 0.6;
+        } else if (capacity > 1 && capacity <= 2) {
+            cost = capacity * 43141;
+            subsidizedCost = cost * 0.6;
+        } else if (capacity > 2 && capacity <= 3) {
+            cost = capacity * 42020;
+            subsidizedCost = cost * 0.6;
+        } else if (capacity > 3 && capacity <= 10) {
+            cost = capacity * 38236;
+            subsidizedCost = cost * 0.8;
+        } else if (capacity > 10 && capacity <= 100) { // Fixed the issue here
+            cost = capacity * 35886; 
+            subsidizedCost = cost * 0.8; 
+        } else if (capacity > 100 && capacity <=500 ) { // Fixed the issue here
+          cost=capacity*35886; 
+          subsidizedCost=cost*0.8; 
+        }
+
+        document.getElementById('result').innerHTML =
+                `Total Cost: ₹ ${cost.toFixed(2)}<br>Subsidized Cost: ₹ ${subsidizedCost.toFixed(2)}`
+    }
+    const menu = document.getElementsByClassName("dropdown_menu")
+		const bars = document.getElementsByTagName("i")
+
+		for (let i = 0; i < bars.length; i++) {
+			bars[i].addEventListener("click", function () {
+				if (menu[0].style.display === "block") {
+					menu[0].style.display = "none";
+				} else {
+					menu[0].style.display = "block";
+				}
+			});
+		}
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>

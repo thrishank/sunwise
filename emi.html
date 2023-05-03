@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>EMI Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      width: 80%;
+      margin: auto;
+      /* padding: 20px; */
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+      top: 5rem;
+      /* height: 100vh; */
+      /* position: absolute;
+      top: 10vh; */
+      /* z-index: -1; */
+      /* top: 10rem; */
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    button[type="button"] {
+      background-color: rgb(85, 147, 147);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button[type="button"]:hover {
+      background-color: rgb(85, 147, 147);
+    }
+
+    input[type="number"][readonly] {
+      border: none;
+      background-color: #f2f2f2;
+    }
+  </style>
+  <div class="totalnav">
+    <div class="logonav">
+      <p class="title animate__animated animate__tada">SunWise</p>
+      <!-- <img src="58cb8d162113472e841fd95dee54a247-removebg-preview.png" class="logo"> -->
+    </div>
+    <div class="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About us</a></li>
+        <li><a href="Tariff.html">Tariff</a></li>
+        <li><a href="option.html">Solar Calculator</a></li>
+        <li><a href="subsidy.html">Subsidy</a></li>
+        <li><a href="emi.html">EMI calculation</a></li>
+      </ul>
+    </div>
+    <div class="bars">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </div>
+  <div class="bars">
+    <div class="dropdown_menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutus.html">About us</a></li>
+        <li><a href="Tariff.html">Tariff</a></li>
+        <li><a href="option.html">Solar Calculator</a></li>
+        <li><a href="subsidy.html">Subsidy</a></li>
+        <li><a href="emi.html">EMI calculation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <br>
+    <h1>EMI Calculator</h1>
+    <form>
+      <label for="loanAmount">Loan Amount:</label>
+      <input type="number" id="loanAmount" name="loanAmount" required>
+      <br>
+      <label for="interestRate">Interest Rate:</label>
+      <input type="number" id="interestRate" name="interestRate" step="0.01" required>
+      <br>
+      <label for="loanTerm">Loan Term:</label>
+      <input type="number" id="loanTerm" name="loanTerm" required>
+      <select id="loanTermType" name="loanTermType">
+        <option value="months">Months</option>
+        <option value="years">Years</option>
+      </select>
+      <br>
+      <button type="button" onclick="calculate()">Calculate</button>
+      <br>
+      <label for="emiAmount">EMI Amount:</label>
+      <input type="number" id="emiAmount" name="emiAmount" readonly>
+    </form>
+  </div>
+
+  <script>
+    console.log("hi raa howlee")
+    function calculate() {
+      // Get the loan amount, interest rate and loan term values from the form
+      let loanAmount = document.getElementById("loanAmount").value;
+      let interestRate = document.getElementById("interestRate").value;
+      let loanTerm = document.getElementById("loanTerm").value;
+      let loanTermType = document.getElementById("loanTermType").value;
+
+      // Convert loan term to months if it is in years
+      if (loanTermType === "years") {
+        loanTerm *= 12;
+      }
+
+      // Calculate the monthly interest rate and EMI amount
+      let monthlyInterestRate = (interestRate / 100) / 12;
+      let emiAmount = (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loanTerm)) / (Math.pow(1 + monthlyInterestRate, loanTerm) - 1);
+
+      // Display the EMI amount in the form
+      document.getElementById("emiAmount").value = emiAmount.toFixed(2);
+    }
+    const menu = document.getElementsByClassName("dropdown_menu")
+    const bars = document.getElementsByTagName("i")
+
+    for (let i = 0; i < bars.length; i++) {
+      bars[i].addEventListener("click", function () {
+        if (menu[0].style.display === "block") {
+          menu[0].style.display = "none";
+        } else {
+          menu[0].style.display = "block";
+        }
+      });
+    }
+
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Solar Energy Calculator</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="style.css" />
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		select,
+		input {
+			padding: 8px;
+			font-size: 16px;
+			border-radius: 4px;
+			border: none;
+			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		select {
+			width: 200px;
+		}
+
+		button {
+			background-color: rgb(85, 147, 147);
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 16px;
+			transition: background-color 0.3s;
+		}
+
+		button:hover {
+			background-color: rgb(85, 147, 147);
+			/* background-color: grey; */
+		}
+
+		#result {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 20px;
+			font-size: 20px;
+			font-weight: bold;
+			text-align: center;
+			padding: 20px;
+			/* background-color: #fff; */
+			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+			border-radius: 4px;
+			display: block;
+		}
+
+		#subsidy-result,
+		#payback {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 20px;
+			font-size: 20px;
+			font-weight: bold;
+			text-align: center;
+			padding: 20px;
+			/* background-color: #fff; */
+			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+			border-radius: 4px;
+			display: block;
+		}
+
+		.states {
+			text-align: center;
+		}
+
+		.totalbox {
+			position: absolute;
+			top: 20vh;
+			width: 100vw;
+			text-align: center;
+			margin: 1rem;
+			padding: 1rem;
+			z-index: -1;
+		}
+	</style>
+</head>
+
+<body style="background-color: #ffffff;">
+	<div class="totalnav">
+		<div class="logonav">
+			<p class="title animate__animated animate__tada">SunWise</p>
+			<!-- <img src="58cb8d162113472e841fd95dee54a247-removebg-preview.png" class="logo"> -->
+		</div>
+		<div class="navbar">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="aboutus.html">About us</a></li>
+				<li><a href="Tariff.html">Tariff</a></li>
+				<li><a href="payback.html">Solar Calculator</a></li>
+				<li><a href="subsidy.html">Subsidy</a></li>
+				<li><a href="emi.html">EMI calculation</a></li>
+			</ul>
+		</div>
+		<div class="bars">
+			<i class="fa-solid fa-bars"></i>
+		</div>
+	</div>
+	<div class="bars">
+		<div class="dropdown_menu">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="aboutus.html">About us</a></li>
+				<li><a href="Tariff.html">Tariff</a></li>
+				<li><a href="payback.html">Solar Calculator</a></li>
+				<li><a href="subsidy.html">Subsidy</a></li>
+				<li><a href="emi.html">EMI calculation</a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div class="totalbox">
+		<div class="states">
+			<label for="state">Select your state</label>
+			<select id="state" name="state">
+				<option value="andhra">Andhra Pradesh</option>
+				<option value="maharashtra">Maharashtra</option>
+				<option value="karnataka">Karnataka</option>
+				<option value="tamilnadu">Tamil Nadu</option>
+				<option value="andaman">Andaman and Nicobar Islands</option>
+				<option value="arunachal">Arunachal Pradesh</option>
+				<option value="assam">Assam</option>
+				<option value="bihar">Bihar</option>
+				<option value="chandigarh">Chandigarh</option>
+				<option value="chhattisgarh">Chhattisgarh</option>
+				<option value="goa">Goa</option>
+				<option value="gujarat">Gujarat</option>
+				<option value="haryana">Haryana</option>
+				<option value="himachal">Himachal Pradesh</option>
+				<option value="jammu">Jammu and Kashmir</option>
+				<option value="jharkhand">Jharkhand</option>
+				<option value="kerala">Kerala</option>
+				<option value="ladakh">Ladakh</option>
+				<option value="lakshadweep">Lakshadweep</option>
+				<option value="madhya">Madhya Pradesh</option>
+				<option value="Manipur">Maharashtra</option>
+				<option value="meghalaya">Meghalaya</option>
+				<option value="mizoram">Mizoram</option>
+				<option value="nagaland">Nagaland</option>
+				<option value="orissa">Orissa</option>
+				<option value="puducherry">Puducherry</option>
+				<option value="punjab">Punjab</option>
+				<option value="rajasthan">Rajasthan</option>
+				<option value="sikkim">Sikkim</option>
+				<option value="telangana">Telangana</option>
+				<option value="tripura">Tripura</option>
+				<option value="uttar">Uttar Pradesh</option>
+				<option value="uttarakhand">Uttarakhand</option>
+				<option value="westbengal">West Bengal</option>
+			</select>
+			<br><br>
+			<label for="bill">Enter your monthly electricity bill:</label>
+			<input type="number" id="bill" name="bill">
+			<br><br>
+			<button onclick="calculate()">Calculate</button>
+			<br><br>
+		</div>
+		<div id="result"></div>
+		<div id="subsidy-result"></div>
+		<div id="payback"></div>
+	</div>
+	<script>
+		function calculate() {
+			let state = document.getElementById("state").value;
+			let bill = parseInt(document.getElementById("bill").value);
+			let perDayCost = bill / 30;
+
+			let unitCost = 0;
+			let solarpanel = 0;
+			switch (state) {
+				case "andhra":
+					unitCost = 4.93;
+					solarpanel = 5
+					break;
+				case "maharashtra":
+					unitCost = 6;
+					solarpanel = 5;
+					break;
+				case "karnataka":
+					unitCost = 6.21;
+					solarpanel = 5;
+					break;
+				case "tamilnadu":
+					unitCost = 4.64;
+					solarpanel = 5;
+					break;
+				case "andaman":
+					unitCost = 8;
+					solarpanel = 4.6;
+					break;
+				case "assam":
+					unitCost = 8;
+					solarpanel = 4.6;
+					break;
+				case "bihar":
+					unitCost = 8;
+					solarpanel = 4.6;
+					break;
+				case "chandigarh":
+					unitCost = 8;
+					solarpanel = 4.6;
+					break;
+				case "chhattisgarh":
+					unitCost = 8;
+					solarpanel = 5;
+					break;
+				case "goa":
+					unitCost = 8;
+					solarpanel = 5;
+					break;
+				case "gujarat":
+					unitCost = 8;
+					solarpanel = 5;
+					break;
+				case "haryana":
+					unitCost = 8;
+					solarpanel = 4.6;
+					break;
+				case "himachal":
+					unitCost = 8;
+					solarpanel = 4.1;
+					break;
+				case "jammu":
+					unitCost = 8;
+					solarpanel = 4.1;
+					break;
+				case "jharkhand":
+					unitCost = 8;
+					solarpanel = 4.6;
+					break;
+				case "kerala":
+					unitCost = 4.83;
+					solarpanel = 5;
+					break;
+				case "ladakh":
+					unitCost = 8;
+					solarpanel = 5;
+					break;
+				case "lakshadweep":
+					unitCost = 8;
+					solarpanel = 5;
+					break;
+				case "madhya":
+					unitCost = 8;
+					solarpanel = 5;
+					break;
+				case "manipur":
+					unitCost = 8;
+					solarpanel = 4.1;
+					break;
+				case "meghalaya":
+					unitCost = 8;
+					solarpanel = 4.1;
+					break;
+				case "mizoram":
+					unitCost = 8;
+					solarpanel = 4.1;
+					break;
+				case "nagaland":
+					unitCost = 8;
+					solarpanel = 4.1;
+					break;
+				case "orissa":
+					unitCost = 8;
+					solarpanel = 4.6;
+					break;
+				case "puducherry":
+					unitCost = 8;
+					solarpanel = 5;
+					break;
+				case "punjab":
+					unitCost = 8;
+					solarpanel = 4.6;
+					break;
+				case "rajasthan":
+					unitCost = 8;
+					solarpanel = 5;
+					break;
+				case "sikkim":
+					unitCost = 8;
+					solarpanel = 4.1;
+					break;
+				case "telangana":
+					unitCost = 8;
+					solarpanel = 5;
+					break;
+				case "tripura":
+					unitCost = 8;
+					solarpanel = 4.1;
+					break;
+				case "uttar":
+					unitCost = 8;
+					solarpanel = 4.6;
+					break;
+				case "uttarakhand":
+					unitCost = 8;
+					solarpanel = 4.1;
+					break;
+				case "westbengal":
+					unitCost = 8;
+					solarpanel = 4.6;
+					break;
+				default:
+					unitCost = 0;
+					solarpanel = 0;
+					break;
+			}
+
+			let perDayUnits = perDayCost / unitCost;
+			let capacity = perDayUnits / solarpanel;
+			let resultText1 = `Your daily electricity usage is around ${perDayUnits.toFixed(2)} Units. <br> You require ${capacity.toFixed(2)} KW capacity of solar panel`;
+			// let resultText2 = `You require ${capacity.toFixed(2)} KW capacity of solar panel`;
+			// let resultText = resultText1 + resultText2
+
+			document.getElementById("result").innerHTML = resultText1;
+			// document.getElementById("result").innerHTML = resultText1;
+			// const capacit = document.getElementById("subsidy-result");
+
+			let cost = 0;
+			let subsidizedCost = 0;
+
+			if (capacity <= 1) {
+				cost = capacity * 46923;
+				subsidizedCost = cost * 0.6;
+			} else if (capacity > 1 && capacity <= 2) {
+				cost = capacity * 43141;
+				subsidizedCost = cost * 0.6;
+			} else if (capacity > 2 && capacity <= 3) {
+				cost = capacity * 42020;
+				subsidizedCost = cost * 0.6;
+			} else if (capacity > 3 && capacity <= 10) {
+				cost = capacity * 38236;
+				subsidizedCost = cost * 0.8;
+			} else if (capacity > 10 && capacity <= 100) { // Fixed the issue here
+				cost = capacity * 35886;
+				subsidizedCost = cost * 0.8;
+			} else if (capacity > 100 && capacity <= 500) { // Fixed the issue here
+				cost = capacity * 35886;
+				subsidizedCost = cost * 0.8;
+			}
+
+			document.getElementById('subsidy-result').innerHTML =
+				`Total Cost: ₹ ${cost.toFixed(2)}<br>Subsidized Cost: ₹ ${subsidizedCost.toFixed(2)}`;
+			let paybackperiod = subsidizedCost / bill;
+			let paybackText1 = `The payback period is ${paybackperiod.toFixed(0)} months`;
+			document.getElementById("payback").innerHTML = paybackText1;
+		}
+		const menu = document.getElementsByClassName("dropdown_menu")
+		const bars = document.getElementsByTagName("i")
+
+		for (let i = 0; i < bars.length; i++) {
+			bars[i].addEventListener("click", function () {
+				if (menu[0].style.display === "block") {
+					menu[0].style.display = "none";
+				} else {
+					menu[0].style.display = "block";
+				}
+			});
+		}
+	</script>
+</body>
+
+</html>

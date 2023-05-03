@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solar Energy Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+            position: relative;
+            top: 5rem;
+            z-index: -1;
+        }
+
+        .box {
+            border: 1px solid black;
+            padding: 20px;
+            text-align: center;
+            margin: 10px;
+            flex-basis: calc(20% - 20px);
+        }
+
+        .box1 {
+            flex-basis: calc(100% - 20px);
+        }
+
+        @media screen and (max-width: 768px) {
+            .box {
+                flex-basis: calc(50% - 20px);
+            }
+
+            .box1 {
+                flex-basis: calc(100% - 20px);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .box {
+                flex-basis: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: #ffffff;">
+    <div class="totalnav">
+        <div class="logonav">
+            <p class="title animate__animated animate__tada">SunWise</p>
+            <!-- <img src="58cb8d162113472e841fd95dee54a247-removebg-preview.png" class="logo"> -->
+        </div>
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About us</a></li>
+                <li><a href="Tariff.html">Tariff</a></li>
+                <li><a href="option.html">Solar Calculator</a></li>
+                <li><a href="subsidy.html">Subsidy</a></li>
+                <li><a href="emi.html">EMI calculation</a></li>
+            </ul>
+        </div>
+        <div class="bars">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
+    <div class="bars">
+        <div class="dropdown_menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About us</a></li>
+                <li><a href="Tariff.html">Tariff</a></li>
+                <li><a href="option.html">Solar Calculator</a></li>
+                <li><a href="subsidy.html">Subsidy</a></li>
+                <li><a href="emi.html">EMI calculation</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    <div class="container">
+        <div class="box box1">
+            <h2>Faculty Mentor</h2>
+            <p>Dr. B. Kiran Babu sir</p>
+            <p>PhD</p>
+        </div>
+        <div class="box box2">
+            <h2>Manish</h2>
+            <p>2nd Year BTech</p>
+            <p>521144</p>
+        </div>
+        <div class="box box3">
+            <h2>Thrishank</h2>
+            <p>2nd Year BTech</p>
+            <p>521146</p>
+        </div>
+        <div class="box box4">
+            <h2>Ajith</h2>
+            <p>2nd Year BTech</p>
+            <p>521130</p>
+        </div>
+        <div class="box box5">
+            <h2>Chandu</h2>
+            <p>2nd Year BTech</p>
+            <p>521145</p>
+        </div>
+    </div>
+    <script>
+        const menu = document.getElementsByClassName("dropdown_menu")
+        const bars = document.getElementsByTagName("i")
+        for (let i = 0; i < bars.length; i++) {
+            bars[i].addEventListener("click", function () {
+                if (menu[0].style.display === "block") {
+                    menu[0].style.display = "none";
+                } else {
+                    menu[0].style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
